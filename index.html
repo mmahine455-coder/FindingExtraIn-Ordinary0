@@ -44,7 +44,7 @@
       flex-direction: column;
       position: relative;
       box-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
-      padding-bottom: 70px;
+      padding-bottom: 75px;
     }
 
     /* Header */
@@ -53,7 +53,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(180deg, rgba(21,13,42,0.9) 0%, rgba(11,7,25,0) 100%);
+      background: linear-gradient(180deg, rgba(21,13,42,0.95) 0%, rgba(11,7,25,0) 100%);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -80,16 +80,15 @@
     }
 
     .brand-title h1 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.5px;
       background: linear-gradient(90deg, #fff, var(--purple-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .brand-title p {
-      font-size: 9px;
+      font-size: 8px;
       color: var(--text-dim);
       letter-spacing: 1px;
     }
@@ -116,12 +115,12 @@
       cursor: pointer;
     }
 
-    /* Content Screens */
+    /* Screens */
     .screen {
       display: none;
       padding: 15px;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
     }
 
     .screen.active {
@@ -133,7 +132,7 @@
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      height: 200px;
+      height: 190px;
       background: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800') center/cover;
       display: flex;
       align-items: flex-end;
@@ -143,7 +142,7 @@
     .hero-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(180deg, rgba(11,7,25,0.2) 0%, rgba(11,7,25,0.95) 100%);
+      background: linear-gradient(180deg, rgba(11,7,25,0.1) 0%, rgba(11,7,25,0.95) 100%);
     }
 
     .hero-content {
@@ -152,35 +151,34 @@
     }
 
     .hero-content h2 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      margin-bottom: 5px;
-      line-height: 1.2;
+      margin-bottom: 4px;
     }
 
     .hero-content p {
       font-size: 11px;
       color: var(--text-dim);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .btn-glow {
       background: linear-gradient(90deg, var(--purple-main), var(--neon-glow));
       color: white;
       border: none;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(224, 64, 251, 0.5);
+      box-shadow: 0 0 10px rgba(224, 64, 251, 0.4);
     }
 
-    /* Category Buttons */
+    /* Quick Categories */
     .quick-categories {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
     }
 
     .cat-card {
@@ -188,44 +186,43 @@
       background: var(--bg-card);
       border: 1px solid var(--border-purple);
       border-radius: 12px;
-      padding: 12px 5px;
+      padding: 10px 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      font-size: 11px;
+      gap: 5px;
+      font-size: 10px;
       color: var(--text-dim);
       cursor: pointer;
     }
 
     .cat-card i {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--purple-light);
     }
 
-    /* Horizontal Cards Grid */
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .section-header h3 {
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .section-header a {
       color: var(--purple-light);
-      font-size: 12px;
+      font-size: 11px;
       text-decoration: none;
     }
 
     .horizontal-scroll {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       overflow-x: auto;
-      padding-bottom: 10px;
+      padding-bottom: 5px;
     }
 
     .horizontal-scroll::-webkit-scrollbar {
@@ -233,8 +230,8 @@
     }
 
     .anime-card {
-      min-width: 120px;
-      height: 170px;
+      min-width: 110px;
+      height: 160px;
       border-radius: 12px;
       background-size: cover;
       background-position: center;
@@ -250,16 +247,10 @@
       background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
     }
 
-    .anime-card h4 {
-      font-size: 12px;
-    }
+    .anime-card h4 { font-size: 11px; }
+    .anime-card p { font-size: 8px; color: var(--text-dim); }
 
-    .anime-card p {
-      font-size: 9px;
-      color: var(--text-dim);
-    }
-
-    /* Search Bar */
+    /* Search & Filters */
     .search-box {
       background: var(--bg-card);
       border: 1px solid var(--border-purple);
@@ -276,7 +267,7 @@
       outline: none;
       color: white;
       width: 100%;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .tags {
@@ -288,9 +279,9 @@
     .tag {
       background: var(--bg-card);
       border: 1px solid var(--border-purple);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 15px;
-      font-size: 11px;
+      font-size: 10px;
       white-space: nowrap;
       cursor: pointer;
     }
@@ -304,11 +295,11 @@
     .wallpapers-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .wallpaper-item {
-      height: 220px;
+      height: 200px;
       border-radius: 12px;
       position: relative;
       overflow: hidden;
@@ -316,25 +307,33 @@
       background-position: center;
     }
 
-    .download-btn {
+    .wallpaper-info {
       position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.7);
+      bottom: 0; left: 0; right: 0;
+      padding: 8px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .download-btn {
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid var(--purple-light);
       color: white;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      backdrop-filter: blur(5px);
     }
 
     /* Community Screen */
-    .post-box {
+    .create-post-box {
       background: var(--bg-card);
       border: 1px solid var(--border-purple);
       border-radius: 12px;
@@ -344,19 +343,19 @@
       gap: 10px;
     }
 
-    .post-input-group {
+    .post-input-row {
       display: flex;
       gap: 10px;
       align-items: center;
     }
 
-    .post-input-group input {
+    .post-input-row input {
       flex: 1;
       background: transparent;
       border: none;
       outline: none;
       color: white;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .post-card {
@@ -369,39 +368,58 @@
       gap: 10px;
     }
 
-    .post-user {
+    .post-user-info {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .post-user img {
-      width: 36px;
-      height: 36px;
+    .post-user-info img {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
+      object-fit: cover;
     }
 
-    .post-user h4 {
-      font-size: 13px;
+    .post-user-info h4 { font-size: 12px; }
+    .post-user-info span { font-size: 9px; color: var(--text-dim); }
+
+    .post-body-text {
+      font-size: 11px;
+      line-height: 1.4;
     }
 
-    .post-user span {
-      font-size: 10px;
-      color: var(--text-dim);
-    }
-
-    .post-image {
+    .post-media {
       width: 100%;
-      max-height: 250px;
+      max-height: 220px;
       border-radius: 8px;
       object-fit: cover;
     }
 
-    .post-actions {
+    .post-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border-purple);
+      padding-top: 8px;
+    }
+
+    .post-actions-btns {
       display: flex;
       gap: 15px;
-      font-size: 12px;
-      color: var(--text-dim);
+    }
+
+    .post-actions-btns span {
+      cursor: pointer;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .post-actions-btns span:hover {
+      color: var(--neon-glow);
     }
 
     /* Profile Screen */
@@ -410,53 +428,47 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .profile-avatar {
-      width: 80px;
-      height: 80px;
+    .profile-avatar-lg {
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       border: 3px solid var(--purple-light);
       object-fit: cover;
     }
 
-    .stats {
+    .stats-box {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      margin: 10px 0;
       background: var(--bg-card);
       padding: 10px;
       border-radius: 12px;
+      border: 1px solid var(--border-purple);
     }
 
-    .stat-item h4 {
-      font-size: 16px;
-      color: var(--purple-light);
-    }
-
-    .stat-item p {
-      font-size: 10px;
-      color: var(--text-dim);
-    }
+    .stat-item h4 { font-size: 15px; color: var(--purple-light); }
+    .stat-item p { font-size: 9px; color: var(--text-dim); }
 
     /* Menu & Admin List */
     .menu-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .menu-item {
       background: var(--bg-card);
       border: 1px solid var(--border-purple);
-      padding: 14px 16px;
+      padding: 12px 15px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
+      font-size: 13px;
     }
 
     .menu-item-left {
@@ -470,17 +482,15 @@
       color: var(--purple-light);
     }
 
-    .admin-only {
-      background: linear-gradient(90deg, rgba(138,43,226,0.2), rgba(224,64,251,0.2));
+    .admin-only-card {
+      background: linear-gradient(90deg, rgba(138,43,226,0.25), rgba(224,64,251,0.25));
       border: 1px solid var(--neon-glow);
     }
 
-    /* Bottom Navbar */
+    /* Navbar */
     .navbar {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 65px;
       background: var(--bg-card);
       border-top: 1px solid var(--border-purple);
@@ -494,27 +504,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       color: var(--text-dim);
-      font-size: 10px;
+      font-size: 9px;
       cursor: pointer;
       width: 20%;
     }
 
-    .nav-item i {
-      font-size: 18px;
-    }
+    .nav-item i { font-size: 16px; }
+    .nav-item.active { color: var(--neon-glow); }
 
-    .nav-item.active {
-      color: var(--neon-glow);
-    }
-
-    /* Modal / Popup */
+    /* Modals */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       z-index: 100;
       justify-content: center;
       align-items: center;
@@ -530,28 +535,27 @@
       max-width: 380px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       position: relative;
     }
 
     .close-modal {
       position: absolute;
-      top: 12px;
-      right: 15px;
+      top: 10px; right: 15px;
       font-size: 18px;
       cursor: pointer;
     }
 
     .input-field {
       width: 100%;
-      padding: 10px 14px;
+      padding: 10px 12px;
       background: var(--bg-dark);
       border: 1px solid var(--border-purple);
       border-radius: 8px;
       color: white;
       outline: none;
+      font-size: 12px;
     }
-
   </style>
 </head>
 <body>
@@ -560,15 +564,15 @@
     <!-- Header -->
     <div class="header">
       <div class="brand">
-        <div class="logo-badge" id="appLogo">F.</div>
+        <div class="logo-badge" id="appLogoDisplay">F.</div>
         <div class="brand-title">
-          <h1 id="appName">FindingExtraOrdinary</h1>
+          <h1 id="appNameDisplay">FindingExtraOrdinary</h1>
           <p>ANIME • WALLPAPERS • COMMUNITY</p>
         </div>
       </div>
       <div class="header-actions">
-        <i class="fas fa-search"></i>
-        <i class="fas fa-bell"></i>
+        <i class="fas fa-search" onclick="switchTab('wallpapersScreen', 1)"></i>
+        <i class="fas fa-bell" onclick="alert('কোনো নতুন নোটিফিকেশন নেই!')"></i>
         <img src="https://via.placeholder.com/150" class="user-avatar-sm" id="headerAvatar" onclick="openLoginModal()">
       </div>
     </div>
@@ -580,39 +584,39 @@
         <div class="hero-content">
           <h2>Discover<br>The Extraordinary In Anime</h2>
           <p>Watch • Share • Connect • Grow</p>
-          <button class="btn-glow">Explore Now &rarr;</button>
+          <button class="btn-glow" onclick="switchTab('wallpapersScreen', 1)">Explore Now &rarr;</button>
         </div>
       </div>
 
       <div class="quick-categories">
-        <div class="cat-card"><i class="fas fa-layer-group"></i><span>Latest</span></div>
-        <div class="cat-card"><i class="fas fa-fire"></i><span>Trending</span></div>
-        <div class="cat-card"><i class="fas fa-star"></i><span>Top Rated</span></div>
-        <div class="cat-card"><i class="fas fa-list"></i><span>Anime List</span></div>
+        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-layer-group"></i><span>Latest</span></div>
+        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-fire"></i><span>Trending</span></div>
+        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-star"></i><span>Top Rated</span></div>
+        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-list"></i><span>Anime List</span></div>
       </div>
 
       <div>
         <div class="section-header">
           <h3>Trending Now</h3>
-          <a href="#">See All &gt;</a>
+          <a href="#" onclick="switchTab('wallpapersScreen', 1)">See All &gt;</a>
         </div>
         <div class="horizontal-scroll">
           <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=300');">
             <div class="anime-card-overlay">
               <h4>Naruto</h4>
-              <p>Action • Adventure</p>
+              <p><i class="fas fa-eye" style="color:var(--neon-glow)"></i> 12.4K</p>
             </div>
           </div>
           <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300');">
             <div class="anime-card-overlay">
               <h4>One Piece</h4>
-              <p>Action • Adventure</p>
+              <p><i class="fas fa-eye" style="color:var(--neon-glow)"></i> 8.7K</p>
             </div>
           </div>
           <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=300');">
             <div class="anime-card-overlay">
               <h4>Demon Slayer</h4>
-              <p>Action • Fantasy</p>
+              <p><i class="fas fa-eye" style="color:var(--neon-glow)"></i> 6.3K</p>
             </div>
           </div>
         </div>
@@ -634,65 +638,74 @@
         <div class="tag">Jujutsu Kaisen</div>
       </div>
 
-      <div class="wallpapers-grid" id="wallpapersList">
-        <!-- Wallpapers populated via JS -->
+      <div class="wallpapers-grid" id="wallpapersListContainer">
+        <!-- Rendered by JS -->
       </div>
     </div>
 
     <!-- 3. Community Screen -->
     <div class="screen" id="communityScreen">
-      <div class="post-box">
-        <div class="post-input-group">
-          <input type="text" id="postText" placeholder="Create Post...">
-          <button class="btn-glow" onclick="submitPost()">Post</button>
+      <div class="create-post-box">
+        <div class="post-input-row">
+          <input type="text" id="postTextInput" placeholder="Create Post (Share your thoughts)...">
+          <button class="btn-glow" onclick="handleCreatePost()">Post</button>
         </div>
-        <input type="text" id="postImgUrl" placeholder="Image URL (Optional)" class="input-field" style="font-size:11px;">
+        <input type="text" id="postImageInput" placeholder="Image URL (Optional)" class="input-field" style="font-size:10px;">
       </div>
 
-      <div id="postsList" style="display:flex; flex-direction:column; gap:12px;">
-        <!-- Posts populated via JS -->
+      <div id="postsFeedContainer" style="display:flex; flex-direction:column; gap:12px;">
+        <!-- Community posts loaded here -->
       </div>
     </div>
 
     <!-- 4. Profile Screen -->
     <div class="screen" id="profileScreen">
       <div class="profile-header">
-        <img src="https://via.placeholder.com/150" id="profileImg" class="profile-avatar">
-        <h3 id="profileName">Not Logged In</h3>
-        <p id="profileEmail" style="font-size:11px; color:var(--text-dim);">Please Login</p>
+        <img src="https://via.placeholder.com/150" id="profileAvatarImg" class="profile-avatar-lg">
+        <h3 id="profileUsernameDisplay">Not Logged In</h3>
+        <p id="profileEmailDisplay" style="font-size:10px; color:var(--text-dim);">Please Login to manage profile</p>
       </div>
 
-      <div class="stats">
-        <div class="stat-item"><h4>12</h4><p>Posts</p></div>
+      <div class="stats-box">
+        <div class="stat-item"><h4 id="userPostCount">0</h4><p>Posts</p></div>
         <div class="stat-item"><h4>4.8K</h4><p>Followers</p></div>
         <div class="stat-item"><h4>12</h4><p>Following</p></div>
       </div>
 
-      <button class="btn-glow" style="width:100%;" onclick="openLoginModal()">Login / Account</button>
+      <button class="btn-glow" style="width:100%;" onclick="openProfileEditModal()">Edit Profile / Photo</button>
+      <button class="btn-glow" style="width:100%; background: #db4437; margin-top:5px;" onclick="openLoginModal()">Switch Account / Login</button>
     </div>
 
     <!-- 5. Menu Screen -->
     <div class="screen" id="menuScreen">
-      <h3 style="margin-bottom: 10px;">Menu</h3>
+      <h3 style="margin-bottom: 5px;">Menu</h3>
       <div class="menu-list">
         <div class="menu-item" onclick="switchTab('profileScreen', 3)">
           <div class="menu-item-left"><i class="fas fa-user"></i><span>My Profile</span></div>
-          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
         </div>
         <div class="menu-item" onclick="switchTab('wallpapersScreen', 1)">
           <div class="menu-item-left"><i class="fas fa-image"></i><span>Wallpaper Upload</span></div>
-          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
+        </div>
+        <div class="menu-item" onclick="alert('Notification Settings: All Enabled')">
+          <div class="menu-item-left"><i class="fas fa-bell"></i><span>Notification Settings</span></div>
+          <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
+        </div>
+        <div class="menu-item" onclick="alert('FindingExtraOrdinary v2.0 - Anime Community Platform')">
+          <div class="menu-item-left"><i class="fas fa-info-circle"></i><span>About Us</span></div>
+          <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
         </div>
 
-        <!-- Admin Panel Button (Hidden unless admin) -->
-        <div class="menu-item admin-only" id="adminPanelBtn" style="display:none;" onclick="openAdminModal()">
+        <!-- Admin Panel (Only for zulhazsheikh3@gmail.com) -->
+        <div class="menu-item admin-only-card" id="adminPanelMenuBtn" style="display:none;" onclick="openAdminModal()">
           <div class="menu-item-left"><i class="fas fa-crown" style="color:var(--neon-glow);"></i><span>Admin Panel (Owner Only)</span></div>
-          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right" style="color:var(--neon-glow)"></i>
         </div>
       </div>
     </div>
 
-    <!-- Navigation Bar -->
+    <!-- Bottom Navigation Bar -->
     <div class="navbar">
       <div class="nav-item active" onclick="switchTab('homeScreen', 0)"><i class="fas fa-home"></i><span>Home</span></div>
       <div class="nav-item" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-image"></i><span>Wallpapers</span></div>
@@ -702,48 +715,58 @@
     </div>
   </div>
 
-  <!-- Auth Modal -->
+  <!-- Login Modal -->
   <div class="modal" id="loginModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
-      <h3>Login to Access</h3>
-      <p style="font-size:12px; color:var(--text-dim);">You must be logged in to download wallpapers or create posts.</p>
-      <input type="email" id="loginEmail" placeholder="Email" class="input-field">
-      <input type="password" id="loginPass" placeholder="Password" class="input-field">
-      <button class="btn-glow" onclick="handleEmailLogin()">Login / Register</button>
-      <button class="btn-glow" style="background:#db4437;" onclick="handleGoogleLogin()">Sign in with Google</button>
+      <h3>Login / Account</h3>
+      <p style="font-size:11px; color:var(--text-dim);">ডাউনলোড করতে বা পোস্ট দিতে অবশ্যই লগইন করুন।</p>
+      <input type="email" id="authEmailInput" placeholder="Email" class="input-field">
+      <input type="password" id="authPassInput" placeholder="Password" class="input-field">
+      <button class="btn-glow" onclick="handleEmailAuth()">Login / Register</button>
+      <button class="btn-glow" style="background:#db4437;" onclick="handleGoogleAuth()">Sign in with Google</button>
     </div>
   </div>
 
-  <!-- Admin Modal -->
+  <!-- Edit Profile Modal -->
+  <div class="modal" id="profileEditModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('profileEditModal')">&times;</span>
+      <h3>Edit Profile</h3>
+      <input type="text" id="editNameInput" placeholder="Your Name" class="input-field">
+      <input type="text" id="editPhotoInput" placeholder="Profile Photo URL" class="input-field">
+      <button class="btn-glow" onclick="saveProfileEdits()">Save Changes</button>
+    </div>
+  </div>
+
+  <!-- Admin Control Panel Modal -->
   <div class="modal" id="adminModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-      <h3>Admin Control Center</h3>
+      <h3><i class="fas fa-crown" style="color:var(--neon-glow);"></i> Admin Control Panel</h3>
       <div>
-        <label style="font-size:11px;">Website Title:</label>
-        <input type="text" id="adminTitleInput" class="input-field" placeholder="App Name">
+        <label style="font-size:10px; color:var(--text-dim);">Website Name:</label>
+        <input type="text" id="adminNewTitle" class="input-field" value="FindingExtraOrdinary">
       </div>
       <div>
-        <label style="font-size:11px;">Logo Icon Text:</label>
-        <input type="text" id="adminLogoInput" class="input-field" placeholder="e.g. F.">
+        <label style="font-size:10px; color:var(--text-dim);">Logo Badge Text:</label>
+        <input type="text" id="adminNewLogo" class="input-field" value="F.">
       </div>
-      <button class="btn-glow" onclick="saveAdminSettings()">Save Changes</button>
-
-      <hr style="border-color: var(--border-purple); margin: 10px 0;">
-      <h4>Site Stats</h4>
-      <p style="font-size: 12px; color: var(--text-dim);">Logged Users: <span id="statLogins" style="color:white;">1</span></p>
-      <p style="font-size: 12px; color: var(--text-dim);">Total Posts: <span id="statPosts" style="color:white;">0</span></p>
+      <button class="btn-glow" onclick="applyAdminSettings()">Update Site</button>
+      
+      <hr style="border-color:var(--border-purple); margin: 5px 0;">
+      <h4 style="font-size: 13px;">Live Site Stats</h4>
+      <p style="font-size: 11px; color:var(--text-dim);">Current User: <span id="adminStatUser" style="color:white;">None</span></p>
+      <p style="font-size: 11px; color:var(--text-dim);">Total Posts in Database: <span id="adminStatTotalPosts" style="color:white;">0</span></p>
     </div>
   </div>
 
-  <!-- Firebase Scripts -->
+  <!-- Firebase Integration Scripts -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, updateProfile as fsUpdate } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    // Your exact Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyCawCcbTt6oZa4k-gpwmuYKncp3wTfqjNE",
       authDomain: "findingextraordinary-3854b.firebaseapp.com",
@@ -758,138 +781,195 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    const ADMIN_EMAIL = "zulhazsheikh3@gmail.com";
-    let currentUser = null;
+    const OWNER_EMAIL = "zulhazsheikh3@gmail.com";
+    window.appCurrentUser = null;
 
-    // Listen Auth State
+    // Monitor Auth State
     onAuthStateChanged(auth, (user) => {
-      currentUser = user;
+      window.appCurrentUser = user;
       if (user) {
-        document.getElementById("profileName").innerText = user.displayName || user.email.split('@')[0];
-        document.getElementById("profileEmail").innerText = user.email;
-        if(user.photoURL) {
-          document.getElementById("profileImg").src = user.photoURL;
-          document.getElementById("headerAvatar").src = user.photoURL;
-        }
+        const name = user.displayName || user.email.split('@')[0];
+        const photo = user.photoURL || "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=150";
+        
+        document.getElementById("profileUsernameDisplay").innerText = name;
+        document.getElementById("profileEmailDisplay").innerText = user.email;
+        document.getElementById("profileAvatarImg").src = photo;
+        document.getElementById("headerAvatar").src = photo;
 
-        // Show Admin Panel if Owner
-        if (user.email === ADMIN_EMAIL) {
-          document.getElementById("adminPanelBtn").style.display = "flex";
+        document.getElementById("adminStatUser").innerText = user.email;
+
+        // Admin panel check
+        if (user.email.toLowerCase() === OWNER_EMAIL) {
+          document.getElementById("adminPanelMenuBtn").style.display = "flex";
         } else {
-          document.getElementById("adminPanelBtn").style.display = "none";
+          document.getElementById("adminPanelMenuBtn").style.display = "none";
         }
       } else {
-        document.getElementById("profileName").innerText = "Not Logged In";
-        document.getElementById("profileEmail").innerText = "Please Login";
-        document.getElementById("adminPanelBtn").style.display = "none";
+        document.getElementById("profileUsernameDisplay").innerText = "Not Logged In";
+        document.getElementById("profileEmailDisplay").innerText = "Please Login";
+        document.getElementById("profileAvatarImg").src = "https://via.placeholder.com/150";
+        document.getElementById("headerAvatar").src = "https://via.placeholder.com/150";
+        document.getElementById("adminStatUser").innerText = "Guest";
+        document.getElementById("adminPanelMenuBtn").style.display = "none";
       }
     });
 
-    // Auth Handlers
-    window.handleGoogleLogin = () => {
+    // Google Login
+    window.handleGoogleAuth = () => {
       const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider).then(() => closeModal('loginModal')).catch(e => alert(e.message));
+      signInWithPopup(auth, provider)
+        .then(() => closeModal('loginModal'))
+        .catch(e => alert("লগইন ত্রুটি: " + e.message));
     };
 
-    window.handleEmailLogin = () => {
-      const email = document.getElementById("loginEmail").value;
-      const pass = document.getElementById("loginPass").value;
-      if (!email || !pass) return alert("Email & Password required");
+    // Email Login / Signup
+    window.handleEmailAuth = () => {
+      const email = document.getElementById("authEmailInput").value;
+      const pass = document.getElementById("authPassInput").value;
+      if (!email || !pass) return alert("ইমেইল ও পাসওয়ার্ড দিন!");
 
       signInWithEmailAndPassword(auth, email, pass)
         .then(() => closeModal('loginModal'))
         .catch(() => {
           createUserWithEmailAndPassword(auth, email, pass)
             .then(() => closeModal('loginModal'))
-            .catch(e => alert(e.message));
+            .catch(e => alert("ত্রুটি: " + e.message));
         });
     };
 
-    // Download Wallpapers with Login Check
-    window.downloadWallpaper = (url) => {
-      if (!currentUser) {
-        alert("আপনি ডাউনলোড করতে চাইলে আগে লগইন করতে হবে!");
+    // Update Profile Name & Photo
+    window.saveProfileEdits = async () => {
+      if (!window.appCurrentUser) return openLoginModal();
+      const newName = document.getElementById("editNameInput").value;
+      const newPhoto = document.getElementById("editPhotoInput").value;
+      
+      try {
+        await updateProfile(auth.currentUser, {
+          displayName: newName || auth.currentUser.displayName,
+          photoURL: newPhoto || auth.currentUser.photoURL
+        });
+        alert("প্রোফাইল সফলভাবে আপডেট হয়েছে!");
+        closeModal('profileEditModal');
+        location.reload();
+      } catch(e) {
+        alert("আপডেট ব্যর্থ: " + e.message);
+      }
+    };
+
+    // Download Wallpapers (Strictly Locked if not logged in)
+    window.triggerDownload = (imgUrl) => {
+      if (!window.appCurrentUser) {
+        alert("ছবি ডাউনলোড করতে হলে প্রথমে আপনাকে লগইন করতে হবে!");
         openLoginModal();
         return;
       }
       const a = document.createElement('a');
-      a.href = url;
-      a.download = 'wallpaper.jpg';
+      a.href = imgUrl;
+      a.download = 'Anime_Wallpaper.jpg';
       a.target = '_blank';
       a.click();
     };
 
-    // Render Sample Wallpapers
-    const wallpapers = [
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400",
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400",
-      "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400"
+    // Populate Wallpapers with views and downloads
+    const sampleWallpapers = [
+      { url: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400", views: "12.4K" },
+      { url: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400", views: "10.8K" },
+      { url: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400", views: "9.4K" },
+      { url: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400", views: "8.2K" }
     ];
 
-    const wallGrid = document.getElementById("wallpapersList");
-    wallpapers.forEach(img => {
-      const item = document.createElement("div");
-      item.className = "wallpaper-item";
-      item.style.backgroundImage = `url('${img}')`;
-      item.innerHTML = `<div class="download-btn" onclick="downloadWallpaper('${img}')"><i class="fas fa-download"></i></div>`;
-      wallGrid.appendChild(item);
+    const wallContainer = document.getElementById("wallpapersListContainer");
+    sampleWallpapers.forEach(w => {
+      const div = document.createElement("div");
+      div.className = "wallpaper-item";
+      div.style.backgroundImage = `url('${w.url}')`;
+      div.innerHTML = `
+        <div class="wallpaper-info">
+          <span><i class="fas fa-eye" style="color:var(--neon-glow)"></i> ${w.views}</span>
+          <div class="download-btn" onclick="triggerDownload('${w.url}')"><i class="fas fa-download"></i></div>
+        </div>
+      `;
+      wallContainer.appendChild(div);
     });
 
-    // Posts Logic
-    window.submitPost = async () => {
-      if (!currentUser) return openLoginModal();
-      const txt = document.getElementById("postText").value;
-      const img = document.getElementById("postImgUrl").value;
-      if (!txt) return;
+    // Community Posting
+    window.handleCreatePost = async () => {
+      if (!window.appCurrentUser) {
+        alert("পোস্ট করতে হলে আগে লগইন করুন!");
+        openLoginModal();
+        return;
+      }
+      const text = document.getElementById("postTextInput").value;
+      const image = document.getElementById("postImageInput").value;
+      if (!text) return alert("কিছু লিখুন!");
 
       try {
         await addDoc(collection(db, "posts"), {
-          user: currentUser.displayName || currentUser.email,
-          text: txt,
-          image: img,
-          time: new Date().toLocaleString()
+          authorName: window.appCurrentUser.displayName || window.appCurrentUser.email,
+          authorPhoto: window.appCurrentUser.photoURL || "https://via.placeholder.com/150",
+          text: text,
+          image: image,
+          likes: Math.floor(Math.random() * 50) + 1,
+          comments: Math.floor(Math.random() * 15),
+          rating: (4.5 + Math.random() * 0.5).toFixed(1),
+          timestamp: new Date().toLocaleDateString()
         });
-        document.getElementById("postText").value = "";
-        document.getElementById("postImgUrl").value = "";
-        loadPosts();
-      } catch(e) { console.error(e); }
+        document.getElementById("postTextInput").value = "";
+        document.getElementById("postImageInput").value = "";
+        fetchPosts();
+      } catch(e) {
+        alert("পোস্ট করা যায়নি: " + e.message);
+      }
     };
 
-    async function loadPosts() {
-      const list = document.getElementById("postsList");
-      list.innerHTML = "";
-      const querySnapshot = await getDocs(collection(db, "posts"));
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        const card = document.createElement("div");
-        card.className = "post-card";
-        card.innerHTML = `
-          <div class="post-user">
-            <img src="https://via.placeholder.com/150">
-            <div>
-              <h4>${data.user}</h4>
-              <span>${data.time}</span>
+    async function fetchPosts() {
+      const feed = document.getElementById("postsFeedContainer");
+      feed.innerHTML = "";
+      try {
+        const querySnapshot = await getDocs(collection(db, "posts"));
+        let count = 0;
+        querySnapshot.forEach((docSnap) => {
+          count++;
+          const data = docSnap.data();
+          const card = document.createElement("div");
+          card.className = "post-card";
+          card.innerHTML = `
+            <div class="post-user-info">
+              <img src="${data.authorPhoto}">
+              <div>
+                <h4>${data.authorName}</h4>
+                <span>${data.timestamp}</span>
+              </div>
             </div>
-          </div>
-          <p style="font-size:12px;">${data.text}</p>
-          ${data.image ? `<img src="${data.image}" class="post-image">` : ''}
-        `;
-        list.appendChild(card);
-      });
-      document.getElementById("statPosts").innerText = querySnapshot.size;
+            <p class="post-body-text">${data.text}</p>
+            ${data.image ? `<img src="${data.image}" class="post-media">` : ''}
+            <div class="post-stats-row">
+              <div class="post-actions-btns">
+                <span onclick="this.querySelector('b').innerText++;"><i class="fas fa-heart" style="color:#ff4757;"></i> <b>${data.likes}</b></span>
+                <span><i class="fas fa-comment" style="color:var(--purple-light);"></i> ${data.comments}</span>
+              </div>
+              <span><i class="fas fa-star" style="color:#ffd700;"></i> ${data.rating}</span>
+            </div>
+          `;
+          feed.appendChild(card);
+        });
+        document.getElementById("userPostCount").innerText = count;
+        document.getElementById("adminStatTotalPosts").innerText = count;
+      } catch(e) {
+        console.error(e);
+      }
     }
-    loadPosts();
+    fetchPosts();
 
-    // Admin Functions
-    window.saveAdminSettings = () => {
-      const title = document.getElementById("adminTitleInput").value;
-      const logo = document.getElementById("adminLogoInput").value;
-      if (title) document.getElementById("appName").innerText = title;
-      if (logo) document.getElementById("appLogo").innerText = logo;
+    // Admin Settings Update
+    window.applyAdminSettings = () => {
+      const title = document.getElementById("adminNewTitle").value;
+      const logo = document.getElementById("adminNewLogo").value;
+      if(title) document.getElementById("appNameDisplay").innerText = title;
+      if(logo) document.getElementById("appLogoDisplay").innerText = logo;
       closeModal('adminModal');
+      alert("অ্যাডমিন সেটিংস সফলভাবে আপডেট হয়েছে!");
     };
-
   </script>
 
   <script>
@@ -904,6 +984,11 @@
       document.getElementById('loginModal').style.display = 'flex';
     }
 
+    function openProfileEditModal() {
+      if(!window.appCurrentUser) return openLoginModal();
+      document.getElementById('profileEditModal').style.display = 'flex';
+    }
+
     function openAdminModal() {
       document.getElementById('adminModal').style.display = 'flex';
     }
@@ -913,4 +998,4 @@
     }
   </script>
 </body>
-  </html>
+</html>
