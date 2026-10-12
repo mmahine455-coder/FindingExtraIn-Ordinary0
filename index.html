@@ -80,7 +80,7 @@
     }
 
     .brand-title h1 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       background: linear-gradient(90deg, #fff, var(--purple-light));
       -webkit-background-clip: text;
@@ -88,9 +88,9 @@
     }
 
     .brand-title p {
-      font-size: 8px;
+      font-size: 7px;
       color: var(--text-dim);
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
     .header-actions {
@@ -208,15 +208,8 @@
       margin-bottom: 5px;
     }
 
-    .section-header h3 {
-      font-size: 15px;
-    }
-
-    .section-header a {
-      color: var(--purple-light);
-      font-size: 11px;
-      text-decoration: none;
-    }
+    .section-header h3 { font-size: 15px; }
+    .section-header a { color: var(--purple-light); font-size: 11px; text-decoration: none; cursor: pointer; }
 
     .horizontal-scroll {
       display: flex;
@@ -225,9 +218,7 @@
       padding-bottom: 5px;
     }
 
-    .horizontal-scroll::-webkit-scrollbar {
-      display: none;
-    }
+    .horizontal-scroll::-webkit-scrollbar { display: none; }
 
     .anime-card {
       min-width: 110px;
@@ -274,7 +265,10 @@
       display: flex;
       gap: 8px;
       overflow-x: auto;
+      padding-bottom: 5px;
     }
+
+    .tags::-webkit-scrollbar { display: none; }
 
     .tag {
       background: var(--bg-card);
@@ -375,10 +369,11 @@
     }
 
     .post-user-info img {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       object-fit: cover;
+      border: 1px solid var(--purple-light);
     }
 
     .post-user-info h4 { font-size: 12px; }
@@ -418,17 +413,26 @@
       align-items: center;
     }
 
-    .post-actions-btns span:hover {
-      color: var(--neon-glow);
-    }
-
     /* Profile Screen */
-    .profile-header {
+    .profile-header-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 16px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 6px;
+      gap: 8px;
+      position: relative;
+    }
+
+    .profile-banner-img {
+      width: 100%;
+      height: 90px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #2a1b4e;
     }
 
     .profile-avatar-lg {
@@ -437,13 +441,17 @@
       border-radius: 50%;
       border: 3px solid var(--purple-light);
       object-fit: cover;
+      margin-top: -45px;
+      background: #111;
+      position: relative;
+      z-index: 2;
     }
 
     .stats-box {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      background: var(--bg-card);
+      background: var(--bg-dark);
       padding: 10px;
       border-radius: 12px;
       border: 1px solid var(--border-purple);
@@ -572,7 +580,7 @@
       </div>
       <div class="header-actions">
         <i class="fas fa-search" onclick="switchTab('wallpapersScreen', 1)"></i>
-        <i class="fas fa-bell" onclick="alert('কোনো নতুন নোটিফিকেশন নেই!')"></i>
+        <i class="fas fa-bell" onclick="alert('Notification Settings Active!')"></i>
         <img src="https://via.placeholder.com/150" class="user-avatar-sm" id="headerAvatar" onclick="openLoginModal()">
       </div>
     </div>
@@ -589,16 +597,16 @@
       </div>
 
       <div class="quick-categories">
-        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-layer-group"></i><span>Latest</span></div>
-        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-fire"></i><span>Trending</span></div>
-        <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-star"></i><span>Top Rated</span></div>
+        <div class="cat-card" onclick="filterWallpapers('All')"><i class="fas fa-layer-group"></i><span>Latest</span></div>
+        <div class="cat-card" onclick="filterWallpapers('Naruto')"><i class="fas fa-fire"></i><span>Trending</span></div>
+        <div class="cat-card" onclick="filterWallpapers('One Piece')"><i class="fas fa-star"></i><span>Top Rated</span></div>
         <div class="cat-card" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-list"></i><span>Anime List</span></div>
       </div>
 
       <div>
         <div class="section-header">
           <h3>Trending Now</h3>
-          <a href="#" onclick="switchTab('wallpapersScreen', 1)">See All &gt;</a>
+          <a onclick="switchTab('wallpapersScreen', 1)">See All &gt;</a>
         </div>
         <div class="horizontal-scroll">
           <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=300');">
@@ -627,19 +635,19 @@
     <div class="screen" id="wallpapersScreen">
       <div class="search-box">
         <i class="fas fa-search" style="color: var(--text-dim);"></i>
-        <input type="text" placeholder="Search wallpapers, titles, creators...">
+        <input type="text" id="wallpaperSearchInput" placeholder="Search wallpapers, titles, creators..." oninput="searchWallpapersLive(this.value)">
       </div>
 
-      <div class="tags">
-        <div class="tag active">All</div>
-        <div class="tag">Naruto</div>
-        <div class="tag">One Piece</div>
-        <div class="tag">Demon Slayer</div>
-        <div class="tag">Jujutsu Kaisen</div>
+      <div class="tags" id="wallpaperTagsRow">
+        <div class="tag active" onclick="filterWallpapers('All')">All</div>
+        <div class="tag" onclick="filterWallpapers('Naruto')">Naruto</div>
+        <div class="tag" onclick="filterWallpapers('One Piece')">One Piece</div>
+        <div class="tag" onclick="filterWallpapers('Demon Slayer')">Demon Slayer</div>
+        <div class="tag" onclick="filterWallpapers('Jujutsu Kaisen')">Jujutsu Kaisen</div>
       </div>
 
       <div class="wallpapers-grid" id="wallpapersListContainer">
-        <!-- Rendered by JS -->
+        <!-- Rendered dynamically -->
       </div>
     </div>
 
@@ -654,16 +662,18 @@
       </div>
 
       <div id="postsFeedContainer" style="display:flex; flex-direction:column; gap:12px;">
-        <!-- Community posts loaded here -->
+        <!-- Community posts rendered here -->
       </div>
     </div>
 
     <!-- 4. Profile Screen -->
     <div class="screen" id="profileScreen">
-      <div class="profile-header">
+      <div class="profile-header-card">
+        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600" class="profile-banner-img" id="profileBannerDisplay">
         <img src="https://via.placeholder.com/150" id="profileAvatarImg" class="profile-avatar-lg">
         <h3 id="profileUsernameDisplay">Not Logged In</h3>
         <p id="profileEmailDisplay" style="font-size:10px; color:var(--text-dim);">Please Login to manage profile</p>
+        <p id="profileBioDisplay" style="font-size:11px; color:var(--text-white); margin-top:2px;">Anime Lover | Otaku | Dreamer ✨</p>
       </div>
 
       <div class="stats-box">
@@ -686,6 +696,10 @@
         </div>
         <div class="menu-item" onclick="switchTab('wallpapersScreen', 1)">
           <div class="menu-item-left"><i class="fas fa-image"></i><span>Wallpaper Upload</span></div>
+          <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
+        </div>
+        <div class="menu-item" onclick="alert('Request submitted successfully!')">
+          <div class="menu-item-left"><i class="fas fa-gamepad"></i><span>APK Request</span></div>
           <i class="fas fa-chevron-right" style="color:var(--text-dim)"></i>
         </div>
         <div class="menu-item" onclick="alert('Notification Settings: All Enabled')">
@@ -735,6 +749,7 @@
       <h3>Edit Profile</h3>
       <input type="text" id="editNameInput" placeholder="Your Name" class="input-field">
       <input type="text" id="editPhotoInput" placeholder="Profile Photo URL" class="input-field">
+      <input type="text" id="editBioInput" placeholder="Your Bio" class="input-field">
       <button class="btn-glow" onclick="saveProfileEdits()">Save Changes</button>
     </div>
   </div>
@@ -756,7 +771,7 @@
       
       <hr style="border-color:var(--border-purple); margin: 5px 0;">
       <h4 style="font-size: 13px;">Live Site Stats</h4>
-      <p style="font-size: 11px; color:var(--text-dim);">Current User: <span id="adminStatUser" style="color:white;">None</span></p>
+      <p style="font-size: 11px; color:var(--text-dim);">Current Admin: <span id="adminStatUser" style="color:white;">None</span></p>
       <p style="font-size: 11px; color:var(--text-dim);">Total Posts in Database: <span id="adminStatTotalPosts" style="color:white;">0</span></p>
     </div>
   </div>
@@ -765,7 +780,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, collection, addDoc, getDocs, updateProfile as fsUpdate } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCawCcbTt6oZa4k-gpwmuYKncp3wTfqjNE",
@@ -795,10 +810,9 @@
         document.getElementById("profileEmailDisplay").innerText = user.email;
         document.getElementById("profileAvatarImg").src = photo;
         document.getElementById("headerAvatar").src = photo;
-
         document.getElementById("adminStatUser").innerText = user.email;
 
-        // Admin panel check
+        // Admin panel access check
         if (user.email.toLowerCase() === OWNER_EMAIL) {
           document.getElementById("adminPanelMenuBtn").style.display = "flex";
         } else {
@@ -842,12 +856,14 @@
       if (!window.appCurrentUser) return openLoginModal();
       const newName = document.getElementById("editNameInput").value;
       const newPhoto = document.getElementById("editPhotoInput").value;
+      const newBio = document.getElementById("editBioInput").value;
       
       try {
         await updateProfile(auth.currentUser, {
           displayName: newName || auth.currentUser.displayName,
           photoURL: newPhoto || auth.currentUser.photoURL
         });
+        if(newBio) document.getElementById("profileBioDisplay").innerText = newBio;
         alert("প্রোফাইল সফলভাবে আপডেট হয়েছে!");
         closeModal('profileEditModal');
         location.reload();
@@ -870,27 +886,54 @@
       a.click();
     };
 
-    // Populate Wallpapers with views and downloads
-    const sampleWallpapers = [
-      { url: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400", views: "12.4K" },
-      { url: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400", views: "10.8K" },
-      { url: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400", views: "9.4K" },
-      { url: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400", views: "8.2K" }
+    // Wallpapers Data with Categories
+    const allWallpapers = [
+      { url: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400", views: "12.4K", category: "Naruto" },
+      { url: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400", views: "10.8K", category: "One Piece" },
+      { url: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400", views: "9.4K", category: "Demon Slayer" },
+      { url: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400", views: "8.2K", category: "Jujutsu Kaisen" },
+      { url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400", views: "14.1K", category: "Naruto" },
+      { url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400", views: "7.9K", category: "One Piece" }
     ];
 
-    const wallContainer = document.getElementById("wallpapersListContainer");
-    sampleWallpapers.forEach(w => {
-      const div = document.createElement("div");
-      div.className = "wallpaper-item";
-      div.style.backgroundImage = `url('${w.url}')`;
-      div.innerHTML = `
-        <div class="wallpaper-info">
-          <span><i class="fas fa-eye" style="color:var(--neon-glow)"></i> ${w.views}</span>
-          <div class="download-btn" onclick="triggerDownload('${w.url}')"><i class="fas fa-download"></i></div>
-        </div>
-      `;
-      wallContainer.appendChild(div);
-    });
+    window.renderWallpapers = (list) => {
+      const wallContainer = document.getElementById("wallpapersListContainer");
+      wallContainer.innerHTML = "";
+      list.forEach(w => {
+        const div = document.createElement("div");
+        div.className = "wallpaper-item";
+        div.style.backgroundImage = `url('${w.url}')`;
+        div.innerHTML = `
+          <div class="wallpaper-info">
+            <span><i class="fas fa-eye" style="color:var(--neon-glow)"></i> ${w.views}</span>
+            <div class="download-btn" onclick="triggerDownload('${w.url}')"><i class="fas fa-download"></i></div>
+          </div>
+        `;
+        wallContainer.appendChild(div);
+      });
+    };
+
+    window.filterWallpapers = (cat) => {
+      switchTab('wallpapersScreen', 1);
+      document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+      event && event.target && event.target.classList.add('active');
+
+      if (cat === 'All') {
+        renderWallpapers(allWallpapers);
+      } else {
+        const filtered = allWallpapers.filter(w => w.category === cat);
+        renderWallpapers(filtered);
+      }
+    };
+
+    window.searchWallpapersLive = (query) => {
+      const q = query.toLowerCase();
+      const filtered = allWallpapers.filter(w => w.category.toLowerCase().includes(q) || w.views.toLowerCase().includes(q));
+      renderWallpapers(filtered);
+    };
+
+    // Initial render
+    renderWallpapers(allWallpapers);
 
     // Community Posting
     window.handleCreatePost = async () => {
@@ -917,6 +960,7 @@
         document.getElementById("postTextInput").value = "";
         document.getElementById("postImageInput").value = "";
         fetchPosts();
+        alert("পোস্ট সফলভাবে প্রকাশিত হয়েছে!");
       } catch(e) {
         alert("পোস্ট করা যায়নি: " + e.message);
       }
