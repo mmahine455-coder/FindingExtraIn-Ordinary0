@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindingExtraOrdinary - Anime & Wallpapers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0b0719;
+      --bg-card: #150d2a;
+      --purple-main: #8a2be2;
+      --purple-light: #b057ff;
+      --neon-glow: #e040fb;
+      --text-white: #ffffff;
+      --text-dim: #a59ac0;
+      --border-purple: #3a2266;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 10px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-purple);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
+      padding-bottom: 70px;
+    }
+
+    /* Header */
+    .header {
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(21,13,42,0.9) 0%, rgba(11,7,25,0) 100%);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--purple-light), var(--purple-main));
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: 0 0 10px var(--neon-glow);
+    }
+
+    .brand-title h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #fff, var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title p {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .header-actions i {
+      font-size: 18px;
+      color: var(--text-white);
+      cursor: pointer;
+    }
+
+    .user-avatar-sm {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #333;
+      object-fit: cover;
+      border: 2px solid var(--purple-light);
+      cursor: pointer;
+    }
+
+    /* Content Screens */
+    .screen {
+      display: none;
+      padding: 15px;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* Banner */
+    .hero-banner {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 200px;
+      background: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800') center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(11,7,25,0.2) 0%, rgba(11,7,25,0.95) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .btn-glow {
+      background: linear-gradient(90deg, var(--purple-main), var(--neon-glow));
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(224, 64, 251, 0.5);
+    }
+
+    /* Category Buttons */
+    .quick-categories {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .cat-card {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 12px;
+      padding: 12px 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-dim);
+      cursor: pointer;
+    }
+
+    .cat-card i {
+      font-size: 18px;
+      color: var(--purple-light);
+    }
+
+    /* Horizontal Cards Grid */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section-header h3 {
+      font-size: 16px;
+    }
+
+    .section-header a {
+      color: var(--purple-light);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .anime-card {
+      min-width: 120px;
+      height: 170px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .anime-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 8px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+    }
+
+    .anime-card h4 {
+      font-size: 12px;
+    }
+
+    .anime-card p {
+      font-size: 9px;
+      color: var(--text-dim);
+    }
+
+    /* Search Bar */
+    .search-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 25px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      width: 100%;
+      font-size: 13px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    .tag {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 11px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .tag.active {
+      background: var(--purple-main);
+      border-color: var(--purple-light);
+    }
+
+    /* Wallpapers Grid */
+    .wallpapers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .wallpaper-item {
+      height: 220px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .download-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--purple-light);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Community Screen */
+    .post-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .post-input-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .post-input-group input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 13px;
+    }
+
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .post-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .post-user img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .post-user h4 {
+      font-size: 13px;
+    }
+
+    .post-user span {
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .post-image {
+      width: 100%;
+      max-height: 250px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 15px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* Profile Screen */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--purple-light);
+      object-fit: cover;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 10px 0;
+      background: var(--bg-card);
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .stat-item h4 {
+      font-size: 16px;
+      color: var(--purple-light);
+    }
+
+    .stat-item p {
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    /* Menu & Admin List */
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      padding: 14px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-item-left i {
+      font-size: 16px;
+      color: var(--purple-light);
+    }
+
+    .admin-only {
+      background: linear-gradient(90deg, rgba(138,43,226,0.2), rgba(224,64,251,0.2));
+      border: 1px solid var(--neon-glow);
+    }
+
+    /* Bottom Navbar */
+    .navbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 65px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-purple);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-dim);
+      font-size: 10px;
+      cursor: pointer;
+      width: 20%;
+    }
+
+    .nav-item i {
+      font-size: 18px;
+    }
+
+    .nav-item.active {
+      color: var(--neon-glow);
+    }
+
+    /* Modal / Popup */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-purple);
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-purple);
+      border-radius: 8px;
+      color: white;
+      outline: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo-badge" id="appLogo">F.</div>
+        <div class="brand-title">
+          <h1 id="appName">FindingExtraOrdinary</h1>
+          <p>ANIME • WALLPAPERS • COMMUNITY</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-bell"></i>
+        <img src="https://via.placeholder.com/150" class="user-avatar-sm" id="headerAvatar" onclick="openLoginModal()">
+      </div>
+    </div>
+
+    <!-- 1. Home Screen -->
+    <div class="screen active" id="homeScreen">
+      <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h2>Discover<br>The Extraordinary In Anime</h2>
+          <p>Watch • Share • Connect • Grow</p>
+          <button class="btn-glow">Explore Now &rarr;</button>
+        </div>
+      </div>
+
+      <div class="quick-categories">
+        <div class="cat-card"><i class="fas fa-layer-group"></i><span>Latest</span></div>
+        <div class="cat-card"><i class="fas fa-fire"></i><span>Trending</span></div>
+        <div class="cat-card"><i class="fas fa-star"></i><span>Top Rated</span></div>
+        <div class="cat-card"><i class="fas fa-list"></i><span>Anime List</span></div>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <h3>Trending Now</h3>
+          <a href="#">See All &gt;</a>
+        </div>
+        <div class="horizontal-scroll">
+          <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=300');">
+            <div class="anime-card-overlay">
+              <h4>Naruto</h4>
+              <p>Action • Adventure</p>
+            </div>
+          </div>
+          <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300');">
+            <div class="anime-card-overlay">
+              <h4>One Piece</h4>
+              <p>Action • Adventure</p>
+            </div>
+          </div>
+          <div class="anime-card" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=300');">
+            <div class="anime-card-overlay">
+              <h4>Demon Slayer</h4>
+              <p>Action • Fantasy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Wallpapers Screen -->
+    <div class="screen" id="wallpapersScreen">
+      <div class="search-box">
+        <i class="fas fa-search" style="color: var(--text-dim);"></i>
+        <input type="text" placeholder="Search wallpapers, titles, creators...">
+      </div>
+
+      <div class="tags">
+        <div class="tag active">All</div>
+        <div class="tag">Naruto</div>
+        <div class="tag">One Piece</div>
+        <div class="tag">Demon Slayer</div>
+        <div class="tag">Jujutsu Kaisen</div>
+      </div>
+
+      <div class="wallpapers-grid" id="wallpapersList">
+        <!-- Wallpapers populated via JS -->
+      </div>
+    </div>
+
+    <!-- 3. Community Screen -->
+    <div class="screen" id="communityScreen">
+      <div class="post-box">
+        <div class="post-input-group">
+          <input type="text" id="postText" placeholder="Create Post...">
+          <button class="btn-glow" onclick="submitPost()">Post</button>
+        </div>
+        <input type="text" id="postImgUrl" placeholder="Image URL (Optional)" class="input-field" style="font-size:11px;">
+      </div>
+
+      <div id="postsList" style="display:flex; flex-direction:column; gap:12px;">
+        <!-- Posts populated via JS -->
+      </div>
+    </div>
+
+    <!-- 4. Profile Screen -->
+    <div class="screen" id="profileScreen">
+      <div class="profile-header">
+        <img src="https://via.placeholder.com/150" id="profileImg" class="profile-avatar">
+        <h3 id="profileName">Not Logged In</h3>
+        <p id="profileEmail" style="font-size:11px; color:var(--text-dim);">Please Login</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item"><h4>12</h4><p>Posts</p></div>
+        <div class="stat-item"><h4>4.8K</h4><p>Followers</p></div>
+        <div class="stat-item"><h4>12</h4><p>Following</p></div>
+      </div>
+
+      <button class="btn-glow" style="width:100%;" onclick="openLoginModal()">Login / Account</button>
+    </div>
+
+    <!-- 5. Menu Screen -->
+    <div class="screen" id="menuScreen">
+      <h3 style="margin-bottom: 10px;">Menu</h3>
+      <div class="menu-list">
+        <div class="menu-item" onclick="switchTab('profileScreen', 3)">
+          <div class="menu-item-left"><i class="fas fa-user"></i><span>My Profile</span></div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="menu-item" onclick="switchTab('wallpapersScreen', 1)">
+          <div class="menu-item-left"><i class="fas fa-image"></i><span>Wallpaper Upload</span></div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <!-- Admin Panel Button (Hidden unless admin) -->
+        <div class="menu-item admin-only" id="adminPanelBtn" style="display:none;" onclick="openAdminModal()">
+          <div class="menu-item-left"><i class="fas fa-crown" style="color:var(--neon-glow);"></i><span>Admin Panel (Owner Only)</span></div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <div class="nav-item active" onclick="switchTab('homeScreen', 0)"><i class="fas fa-home"></i><span>Home</span></div>
+      <div class="nav-item" onclick="switchTab('wallpapersScreen', 1)"><i class="fas fa-image"></i><span>Wallpapers</span></div>
+      <div class="nav-item" onclick="switchTab('communityScreen', 2)"><i class="fas fa-users"></i><span>Community</span></div>
+      <div class="nav-item" onclick="switchTab('profileScreen', 3)"><i class="fas fa-user"></i><span>Profile</span></div>
+      <div class="nav-item" onclick="switchTab('menuScreen', 4)"><i class="fas fa-bars"></i><span>Menu</span></div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+      <h3>Login to Access</h3>
+      <p style="font-size:12px; color:var(--text-dim);">You must be logged in to download wallpapers or create posts.</p>
+      <input type="email" id="loginEmail" placeholder="Email" class="input-field">
+      <input type="password" id="loginPass" placeholder="Password" class="input-field">
+      <button class="btn-glow" onclick="handleEmailLogin()">Login / Register</button>
+      <button class="btn-glow" style="background:#db4437;" onclick="handleGoogleLogin()">Sign in with Google</button>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modal" id="adminModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
+      <h3>Admin Control Center</h3>
+      <div>
+        <label style="font-size:11px;">Website Title:</label>
+        <input type="text" id="adminTitleInput" class="input-field" placeholder="App Name">
+      </div>
+      <div>
+        <label style="font-size:11px;">Logo Icon Text:</label>
+        <input type="text" id="adminLogoInput" class="input-field" placeholder="e.g. F.">
+      </div>
+      <button class="btn-glow" onclick="saveAdminSettings()">Save Changes</button>
+
+      <hr style="border-color: var(--border-purple); margin: 10px 0;">
+      <h4>Site Stats</h4>
+      <p style="font-size: 12px; color: var(--text-dim);">Logged Users: <span id="statLogins" style="color:white;">1</span></p>
+      <p style="font-size: 12px; color: var(--text-dim);">Total Posts: <span id="statPosts" style="color:white;">0</span></p>
+    </div>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // Your exact Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCawCcbTt6oZa4k-gpwmuYKncp3wTfqjNE",
+      authDomain: "findingextraordinary-3854b.firebaseapp.com",
+      projectId: "findingextraordinary-3854b",
+      storageBucket: "findingextraordinary-3854b.firebasestorage.app",
+      messagingSenderId: "233156332357",
+      appId: "1:233156332357:web:b60cd3b3206ef7fcf24c2c",
+      measurementId: "G-V9ZRJ3BC1K"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const ADMIN_EMAIL = "zulhazsheikh3@gmail.com";
+    let currentUser = null;
+
+    // Listen Auth State
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      if (user) {
+        document.getElementById("profileName").innerText = user.displayName || user.email.split('@')[0];
+        document.getElementById("profileEmail").innerText = user.email;
+        if(user.photoURL) {
+          document.getElementById("profileImg").src = user.photoURL;
+          document.getElementById("headerAvatar").src = user.photoURL;
+        }
+
+        // Show Admin Panel if Owner
+        if (user.email === ADMIN_EMAIL) {
+          document.getElementById("adminPanelBtn").style.display = "flex";
+        } else {
+          document.getElementById("adminPanelBtn").style.display = "none";
+        }
+      } else {
+        document.getElementById("profileName").innerText = "Not Logged In";
+        document.getElementById("profileEmail").innerText = "Please Login";
+        document.getElementById("adminPanelBtn").style.display = "none";
+      }
+    });
+
+    // Auth Handlers
+    window.handleGoogleLogin = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider).then(() => closeModal('loginModal')).catch(e => alert(e.message));
+    };
+
+    window.handleEmailLogin = () => {
+      const email = document.getElementById("loginEmail").value;
+      const pass = document.getElementById("loginPass").value;
+      if (!email || !pass) return alert("Email & Password required");
+
+      signInWithEmailAndPassword(auth, email, pass)
+        .then(() => closeModal('loginModal'))
+        .catch(() => {
+          createUserWithEmailAndPassword(auth, email, pass)
+            .then(() => closeModal('loginModal'))
+            .catch(e => alert(e.message));
+        });
+    };
+
+    // Download Wallpapers with Login Check
+    window.downloadWallpaper = (url) => {
+      if (!currentUser) {
+        alert("আপনি ডাউনলোড করতে চাইলে আগে লগইন করতে হবে!");
+        openLoginModal();
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'wallpaper.jpg';
+      a.target = '_blank';
+      a.click();
+    };
+
+    // Render Sample Wallpapers
+    const wallpapers = [
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400",
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=400",
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400",
+      "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=400"
+    ];
+
+    const wallGrid = document.getElementById("wallpapersList");
+    wallpapers.forEach(img => {
+      const item = document.createElement("div");
+      item.className = "wallpaper-item";
+      item.style.backgroundImage = `url('${img}')`;
+      item.innerHTML = `<div class="download-btn" onclick="downloadWallpaper('${img}')"><i class="fas fa-download"></i></div>`;
+      wallGrid.appendChild(item);
+    });
+
+    // Posts Logic
+    window.submitPost = async () => {
+      if (!currentUser) return openLoginModal();
+      const txt = document.getElementById("postText").value;
+      const img = document.getElementById("postImgUrl").value;
+      if (!txt) return;
+
+      try {
+        await addDoc(collection(db, "posts"), {
+          user: currentUser.displayName || currentUser.email,
+          text: txt,
+          image: img,
+          time: new Date().toLocaleString()
+        });
+        document.getElementById("postText").value = "";
+        document.getElementById("postImgUrl").value = "";
+        loadPosts();
+      } catch(e) { console.error(e); }
+    };
+
+    async function loadPosts() {
+      const list = document.getElementById("postsList");
+      list.innerHTML = "";
+      const querySnapshot = await getDocs(collection(db, "posts"));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "post-card";
+        card.innerHTML = `
+          <div class="post-user">
+            <img src="https://via.placeholder.com/150">
+            <div>
+              <h4>${data.user}</h4>
+              <span>${data.time}</span>
+            </div>
+          </div>
+          <p style="font-size:12px;">${data.text}</p>
+          ${data.image ? `<img src="${data.image}" class="post-image">` : ''}
+        `;
+        list.appendChild(card);
+      });
+      document.getElementById("statPosts").innerText = querySnapshot.size;
+    }
+    loadPosts();
+
+    // Admin Functions
+    window.saveAdminSettings = () => {
+      const title = document.getElementById("adminTitleInput").value;
+      const logo = document.getElementById("adminLogoInput").value;
+      if (title) document.getElementById("appName").innerText = title;
+      if (logo) document.getElementById("appLogo").innerText = logo;
+      closeModal('adminModal');
+    };
+
+  </script>
+
+  <script>
+    function switchTab(screenId, index) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+      document.querySelectorAll('.nav-item')[index].classList.add('active');
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function openAdminModal() {
+      document.getElementById('adminModal').style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+</body>
+  </html>
